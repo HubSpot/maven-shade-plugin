@@ -1,0 +1,14 @@
+env:
+  SKIP_VERSION_OVERRIDE: true
+  MAVEN_ARGS: -Drat.skip=true
+
+before:
+  - description: "Change version to 3.2.2-{branch}-SNAPSHOT"
+    commands:
+      - sed -i "s~^  <version>3.2.2-hubspot-SNAPSHOT</version>$~  <version>3.2.2-$GIT_BRANCH-SNAPSHOT</version>~" pom.xml
+
+buildpack:
+  host: git.hubteam.com
+  organization: HubSpot
+  repository: Blazar-Buildpack-Java
+  branch: v2
